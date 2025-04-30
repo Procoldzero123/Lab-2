@@ -27,15 +27,27 @@ def find_min_max(floatlist):
     return min_temp, max_temp
 
 
-def sort_temperature():
-    print("sort_temperature")
+def sort_temperature(floatlist):
+    sorted_list = sorted(floatlist)
+    print("Sorted Temperatures:", sorted_list)
+    return sorted_list
 
-
-def calc_median_temperature():
-    print("calc_median_temperature")
-
+def calc_median_temperature(floatlist):
+    if len(floatlist) == 0:  # Check if the list is empty
+        print("No numbers provided.")
+        return None
+    sorted_list = sorted(floatlist)  # Sort the list
+    n = len(sorted_list)
+    mid = n // 2
+    if n % 2 == 0:  # If even number of elements
+        median = (sorted_list[mid - 1] + sorted_list[mid]) / 2
+    else:  # If odd number of elements
+        median = sorted_list[mid]
+    print("Median Temperature:", median)
+    return median
 
 display_main_menu()
 floatlist = get_user_input()
 calc_average(floatlist)
 find_min_max(floatlist)
+calc_median_temperature(floatlist)
